@@ -1,0 +1,92 @@
+name: Deploy Firebase Hosting + Cloud Run
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+
+    env:
+      GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+      GCP_REGION: asia-northeast1
+      CLOUD_RUN_SERVICE: fengshui-api
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      GOOGLE_MAPS_API_KEY_SERVER: ${{ secrets.GOOGLE_MAPS_API_KEY_SERVER }}
+      GOOGLE_SHEETS_ID: ${{ secrets.GOOGLE_SHEETS_ID }}
+      GOOGLE_APPLICATION_CREDENTIALS_JSON: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_JSON }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT_EMAIL }}
+
+      - name: Setup gcloud
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Build frontend
+        working-directory: frontend
+        env:
+          VITE_GOOGLE_MAPS_API_KEY: ${{ secrets.VITE_GOOGLE_MAPS_API_KEY }}
+        run: |
+          npm ci
+          npm run typecheck
+          npm run build
+
+      - name: Sync secrets to Secret Manager
+        run: bash scripts/set_gcp_secrets.sh
+
+      - name: Deploy backend (Cloud Run)
+        run: bash scripts/deploy_cloudrun.sh
+
+      - name: Install Firebase CLI
+        run: npm install -g firebase-tools
+
+      - name: Deploy hosting
+        run: firebase deploy --only hosting --project "$GCP_PROJECT_ID" --non-interactive
+
+      - name: Health check (Cloud Run)
+        run: |
+          RUN_URL="$(gcloud run services describe "$CLOUD_RUN_SERVICE" --region "$GCP_REGION" --project "$GCP_PROJECT_ID" --format='value(status.url)')"
+          echo "Cloud Run URL: $RUN_URL"
+          for i in {1..20}; do
+            code="$(curl -sS -o /dev/null -w '%{http_code}' "$RUN_URL/docs" || true)"
+            if [ "$code" = "200" ]; then
+              echo "Cloud Run health check passed: $code"
+              exit 0
+            fi
+            echo "retry $i: status=$code"
+            sleep 5
+          done
+          echo "Cloud Run health check failed"
+          exit 1
+
+      - name: Health check (Firebase Hosting)
+        run: |
+          HOSTING_URL="https://${GCP_PROJECT_ID}.web.app"
+          echo "Hosting URL: $HOSTING_URL"
+          for i in {1..20}; do
+            code="$(curl -sS -o /dev/null -w '%{http_code}' "$HOSTING_URL" || true)"
+            if [ "$code" = "200" ]; then
+              echo "Hosting health check passed: $code"
+              exit 0
+            fi
+            echo "retry $i: status=$code"
+            sleep 5
+          done
+          echo "Hosting health check failed"
+          exit 1

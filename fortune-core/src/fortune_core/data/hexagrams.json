@@ -1,0 +1,1862 @@
+{
+  "trigrams": [
+    {
+      "number": 1,
+      "bagua": "qian",
+      "name": "乾",
+      "reading": "けん",
+      "symbol": "☰",
+      "attribute": "健",
+      "family": "父",
+      "lines": [
+        1,
+        1,
+        1
+      ],
+      "direction": "north_west",
+      "five_element": "metal"
+    },
+    {
+      "number": 2,
+      "bagua": "dui",
+      "name": "兌",
+      "reading": "だ",
+      "symbol": "☱",
+      "attribute": "説",
+      "family": "少女",
+      "lines": [
+        0,
+        1,
+        1
+      ],
+      "direction": "west",
+      "five_element": "metal"
+    },
+    {
+      "number": 3,
+      "bagua": "li",
+      "name": "離",
+      "reading": "り",
+      "symbol": "☲",
+      "attribute": "麗",
+      "family": "中女",
+      "lines": [
+        1,
+        0,
+        1
+      ],
+      "direction": "south",
+      "five_element": "fire"
+    },
+    {
+      "number": 4,
+      "bagua": "zhen",
+      "name": "震",
+      "reading": "しん",
+      "symbol": "☳",
+      "attribute": "動",
+      "family": "長男",
+      "lines": [
+        0,
+        0,
+        1
+      ],
+      "direction": "east",
+      "five_element": "wood"
+    },
+    {
+      "number": 5,
+      "bagua": "xun",
+      "name": "巽",
+      "reading": "そん",
+      "symbol": "☴",
+      "attribute": "入",
+      "family": "長女",
+      "lines": [
+        1,
+        1,
+        0
+      ],
+      "direction": "south_east",
+      "five_element": "wood"
+    },
+    {
+      "number": 6,
+      "bagua": "kan",
+      "name": "坎",
+      "reading": "かん",
+      "symbol": "☵",
+      "attribute": "陥",
+      "family": "中男",
+      "lines": [
+        0,
+        1,
+        0
+      ],
+      "direction": "north",
+      "five_element": "water"
+    },
+    {
+      "number": 7,
+      "bagua": "gen",
+      "name": "艮",
+      "reading": "ごん",
+      "symbol": "☶",
+      "attribute": "止",
+      "family": "少男",
+      "lines": [
+        1,
+        0,
+        0
+      ],
+      "direction": "north_east",
+      "five_element": "earth"
+    },
+    {
+      "number": 8,
+      "bagua": "kun",
+      "name": "坤",
+      "reading": "こん",
+      "symbol": "☷",
+      "attribute": "順",
+      "family": "母",
+      "lines": [
+        0,
+        0,
+        0
+      ],
+      "direction": "south_west",
+      "five_element": "earth"
+    }
+  ],
+  "hexagrams": [
+    {
+      "number": 1,
+      "name": "乾為天",
+      "reading": "けんいてん",
+      "meaning": "健全・創造・天の力",
+      "judgement": "世界が動くのを待つな。まず自分が天のように動き続けよ。迷いを断ち、責任を引き受ける者に道はひらける。",
+      "lower_trigram_number": 1,
+      "upper_trigram_number": 1,
+      "lower_bagua": "qian",
+      "upper_bagua": "qian",
+      "lines": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "direction": {
+        "lower": "north_west",
+        "upper": "north_west"
+      },
+      "five_element": {
+        "lower": "metal",
+        "upper": "metal"
+      }
+    },
+    {
+      "number": 2,
+      "name": "坤為地",
+      "reading": "こんいち",
+      "meaning": "従順・包容・大地の力",
+      "judgement": "前に出る力より、受けとめ育てる力が問われる時。柔らかさは弱さではない。人と縁を活かし、実りを遅らせず育てよ。",
+      "lower_trigram_number": 8,
+      "upper_trigram_number": 8,
+      "lower_bagua": "kun",
+      "upper_bagua": "kun",
+      "lines": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "direction": {
+        "lower": "south_west",
+        "upper": "south_west"
+      },
+      "five_element": {
+        "lower": "earth",
+        "upper": "earth"
+      }
+    },
+    {
+      "number": 3,
+      "name": "水雷屯",
+      "reading": "すいらいちゅん",
+      "meaning": "困難の始まり・創業の苦労",
+      "judgement": "始まりは美しくなくていい。混乱と手探りの中で、足場を一つずつ固めることが勝ち筋になる。拙速より整備を選べ。",
+      "lower_trigram_number": 4,
+      "upper_trigram_number": 6,
+      "lower_bagua": "zhen",
+      "upper_bagua": "kan",
+      "lines": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "direction": {
+        "lower": "east",
+        "upper": "north"
+      },
+      "five_element": {
+        "lower": "wood",
+        "upper": "water"
+      }
+    },
+    {
+      "number": 4,
+      "name": "山水蒙",
+      "reading": "さんすいもう",
+      "meaning": "無知・啓蒙・学びの始まり",
+      "judgement": "知らないことを恥じるより、知ったふりを恥じよ。問いを磨き、導きを素直に受ける者だけが、迷いを智慧へ変えられる。",
+      "lower_trigram_number": 6,
+      "upper_trigram_number": 7,
+      "lower_bagua": "kan",
+      "upper_bagua": "gen",
+      "lines": [
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ],
+      "direction": {
+        "lower": "north",
+        "upper": "north_east"
+      },
+      "five_element": {
+        "lower": "water",
+        "upper": "earth"
+      }
+    },
+    {
+      "number": 5,
+      "name": "水天需",
+      "reading": "すいてんじゅ",
+      "meaning": "待機・忍耐・機会を待つ",
+      "judgement": "待つとは停止ではない。来るべき時に備えて、信を守り、心を澄ませ、準備を深くする行為だ。焦りは運を濁らせる。",
+      "lower_trigram_number": 1,
+      "upper_trigram_number": 6,
+      "lower_bagua": "qian",
+      "upper_bagua": "kan",
+      "lines": [
+        1,
+        1,
+        1,
+        0,
+        1,
+        0
+      ],
+      "direction": {
+        "lower": "north_west",
+        "upper": "north"
+      },
+      "five_element": {
+        "lower": "metal",
+        "upper": "water"
+      }
+    },
+    {
+      "number": 6,
+      "name": "天水訟",
+      "reading": "てんすいしょう",
+      "meaning": "争い・訴訟・対立",
+      "judgement": "正しさだけで人は動かない。勝敗に執着するほど本題は遠のく。退くべき線を見極め、争いを長引かせない知性を持て。",
+      "lower_trigram_number": 6,
+      "upper_trigram_number": 1,
+      "lower_bagua": "kan",
+      "upper_bagua": "qian",
+      "lines": [
+        0,
+        1,
+        0,
+        1,
+        1,
+        1
+      ],
+      "direction": {
+        "lower": "north",
+        "upper": "north_west"
+      },
+      "five_element": {
+        "lower": "water",
+        "upper": "metal"
+      }
+    },
+    {
+      "number": 7,
+      "name": "地水師",
+      "reading": "ちすいし",
+      "meaning": "軍勢・規律・指導力",
+      "judgement": "組織は熱量より規律で生きる。号令の大きさではなく、目的の正しさと統率の一貫性が人心を束ねる。私情を持ち込むな。",
+      "lower_trigram_number": 6,
+      "upper_trigram_number": 8,
+      "lower_bagua": "kan",
+      "upper_bagua": "kun",
+      "lines": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "direction": {
+        "lower": "north",
+        "upper": "south_west"
+      },
+      "five_element": {
+        "lower": "water",
+        "upper": "earth"
+      }
+    },
+    {
+      "number": 8,
+      "name": "水地比",
+      "reading": "すいちひ",
+      "meaning": "親しむ・協力・結束",
+      "judgement": "誰と結ぶかで未来は変わる。孤立を恐れて縁を選ぶな。志の近い者と誠実につながるほど、運は静かに太くなる。",
+      "lower_trigram_number": 8,
+      "upper_trigram_number": 6,
+      "lower_bagua": "kun",
+      "upper_bagua": "kan",
+      "lines": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "direction": {
+        "lower": "south_west",
+        "upper": "north"
+      },
+      "five_element": {
+        "lower": "earth",
+        "upper": "water"
+      }
+    },
+    {
+      "number": 9,
+      "name": "風天小畜",
+      "reading": "ふうてんしょうちく",
+      "meaning": "小さな蓄積・漸進",
+      "judgement": "大きな成果は小さな抑制から生まれる。いまは押し切る時ではなく、整える時。見えない蓄積が次の飛躍を決める。",
+      "lower_trigram_number": 1,
+      "upper_trigram_number": 5,
+      "lower_bagua": "qian",
+      "upper_bagua": "xun",
+      "lines": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "direction": {
+        "lower": "north_west",
+        "upper": "south_east"
+      },
+      "five_element": {
+        "lower": "metal",
+        "upper": "wood"
+      }
+    },
+    {
+      "number": 10,
+      "name": "天沢履",
+      "reading": "てんたくり",
+      "meaning": "礼節・慎重な行動",
+      "judgement": "危うい場面ほど礼が身を守る。力で踏み越えず、筋を通して進め。丁寧さは遠回りに見えて、最短の安全策になる。",
+      "lower_trigram_number": 2,
+      "upper_trigram_number": 1,
+      "lower_bagua": "dui",
+      "upper_bagua": "qian",
+      "lines": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "direction": {
+        "lower": "west",
+        "upper": "north_west"
+      },
+      "five_element": {
+        "lower": "metal",
+        "upper": "metal"
+      }
+    },
+    {
+      "number": 11,
+      "name": "地天泰",
+      "reading": "ちてんたい",
+      "meaning": "平和・繁栄・調和",
+      "judgement": "通じ合う流れが戻ってくる好機。だからこそ慢心せず、基盤を公平に整えよ。順風の時に積んだ徳が停滞期を救う。",
+      "lower_trigram_number": 1,
+      "upper_trigram_number": 8,
+      "lower_bagua": "qian",
+      "upper_bagua": "kun",
+      "lines": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "direction": {
+        "lower": "north_west",
+        "upper": "south_west"
+      },
+      "five_element": {
+        "lower": "metal",
+        "upper": "earth"
+      }
+    },
+    {
+      "number": 12,
+      "name": "天地否",
+      "reading": "てんちひ",
+      "meaning": "停滞・閉塞・行き詰まり",
+      "judgement": "言葉が通じず、善意が届かない閉塞の相。無理に突破せず、守るべき価値を守れ。乱流期は耐える者が次局を取る。",
+      "lower_trigram_number": 8,
+      "upper_trigram_number": 1,
+      "lower_bagua": "kun",
+      "upper_bagua": "qian",
+      "lines": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "direction": {
+        "lower": "south_west",
+        "upper": "north_west"
+      },
+      "five_element": {
+        "lower": "earth",
+        "upper": "metal"
+      }
+    },
+    {
+      "number": 13,
+      "name": "天火同人",
+      "reading": "てんかどうじん",
+      "meaning": "協同・一致・団結",
+      "judgement": "内輪の安心ではなく、開かれた場で同志を募れ。立場の違いを越えて目的を共有できるとき、仕事は個人の限界を超える。",
+      "lower_trigram_number": 3,
+      "upper_trigram_number": 1,
+      "lower_bagua": "li",
+      "upper_bagua": "qian",
+      "lines": [
+        1,
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      "direction": {
+        "lower": "south",
+        "upper": "north_west"
+      },
+      "five_element": {
+        "lower": "fire",
+        "upper": "metal"
+      }
+    },
+    {
+      "number": 14,
+      "name": "火天大有",
+      "reading": "かてんたいゆう",
+      "meaning": "大いなる所有・繁栄",
+      "judgement": "手にしたものの大きさより、扱う品位が問われる時。持つ者の義が欠ければ繁栄は崩れる。分かち、整え、巡らせよ。",
+      "lower_trigram_number": 1,
+      "upper_trigram_number": 3,
+      "lower_bagua": "qian",
+      "upper_bagua": "li",
+      "lines": [
+        1,
+        1,
+        1,
+        1,
+        0,
+        1
+      ],
+      "direction": {
+        "lower": "north_west",
+        "upper": "south"
+      },
+      "five_element": {
+        "lower": "metal",
+        "upper": "fire"
+      }
+    },
+    {
+      "number": 15,
+      "name": "地山謙",
+      "reading": "ちざんけん",
+      "meaning": "謙遜・謙虚・控えめ",
+      "judgement": "謙虚とは自分を小さくすることではない。成果を誇らず、他者の働きを照らす態度だ。低い場所に水が集まるように福も集まる。",
+      "lower_trigram_number": 7,
+      "upper_trigram_number": 8,
+      "lower_bagua": "gen",
+      "upper_bagua": "kun",
+      "lines": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "direction": {
+        "lower": "north_east",
+        "upper": "south_west"
+      },
+      "five_element": {
+        "lower": "earth",
+        "upper": "earth"
+      }
+    },
+    {
+      "number": 16,
+      "name": "雷地豫",
+      "reading": "らいちよ",
+      "meaning": "喜び・準備・楽観",
+      "judgement": "気運が上がる時ほど準備の質が差を生む。高揚に流されず、段取りを固めよ。歓喜は規律に支えられてこそ長続きする。",
+      "lower_trigram_number": 8,
+      "upper_trigram_number": 4,
+      "lower_bagua": "kun",
+      "upper_bagua": "zhen",
+      "lines": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "direction": {
+        "lower": "south_west",
+        "upper": "east"
+      },
+      "five_element": {
+        "lower": "earth",
+        "upper": "wood"
+      }
+    },
+    {
+      "number": 17,
+      "name": "沢雷随",
+      "reading": "たくらいずい",
+      "meaning": "随う・適応・追随",
+      "judgement": "従うことは屈服ではない。大勢の流れを読み、自分の芯を失わず合わせる技術だ。何に従い、何に従わないかを明確にせよ。",
+      "lower_trigram_number": 4,
+      "upper_trigram_number": 2,
+      "lower_bagua": "zhen",
+      "upper_bagua": "dui",
+      "lines": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        1
+      ],
+      "direction": {
+        "lower": "east",
+        "upper": "west"
+      },
+      "five_element": {
+        "lower": "wood",
+        "upper": "metal"
+      }
+    },
+    {
+      "number": 18,
+      "name": "山風蠱",
+      "reading": "さんぷうこ",
+      "meaning": "腐敗の修正・改革",
+      "judgement": "先送りされた問題が表面化する。責任の所在より、修復の順序を先に決めよ。痛みを引き受ける改革だけが再生を生む。",
+      "lower_trigram_number": 5,
+      "upper_trigram_number": 7,
+      "lower_bagua": "xun",
+      "upper_bagua": "gen",
+      "lines": [
+        1,
+        1,
+        0,
+        1,
+        0,
+        0
+      ],
+      "direction": {
+        "lower": "south_east",
+        "upper": "north_east"
+      },
+      "five_element": {
+        "lower": "wood",
+        "upper": "earth"
+      }
+    },
+    {
+      "number": 19,
+      "name": "地沢臨",
+      "reading": "ちたくりん",
+      "meaning": "臨む・近づく・監督",
+      "judgement": "相手に近づくほど、言葉より姿勢が見られる。上に立つなら支配でなく伴走を。盛運には期限がある、今こそ誠を尽くせ。",
+      "lower_trigram_number": 2,
+      "upper_trigram_number": 8,
+      "lower_bagua": "dui",
+      "upper_bagua": "kun",
+      "lines": [
+        0,
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "direction": {
+        "lower": "west",
+        "upper": "south_west"
+      },
+      "five_element": {
+        "lower": "metal",
+        "upper": "earth"
+      }
+    },
+    {
+      "number": 20,
+      "name": "風地観",
+      "reading": "ふうちかん",
+      "meaning": "観察・洞察・見渡す",
+      "judgement": "動く前に観る。外を観て内を観る。評価を急がず本質を見抜ける人だけが、次の一手を誤らない。静かな観察は最強の行動だ。",
+      "lower_trigram_number": 8,
+      "upper_trigram_number": 5,
+      "lower_bagua": "kun",
+      "upper_bagua": "xun",
+      "lines": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        0
+      ],
+      "direction": {
+        "lower": "south_west",
+        "upper": "south_east"
+      },
+      "five_element": {
+        "lower": "earth",
+        "upper": "wood"
+      }
+    },
+    {
+      "number": 21,
+      "name": "火雷噬嗑",
+      "reading": "からいぜいこう",
+      "meaning": "噛み砕く・決断・刑罰",
+      "judgement": "曖昧にしてきた障害を断つ時。痛みを伴っても、基準を明確にして処理せよ。中途半端な温情は、後でより大きな損失になる。",
+      "lower_trigram_number": 4,
+      "upper_trigram_number": 3,
+      "lower_bagua": "zhen",
+      "upper_bagua": "li",
+      "lines": [
+        0,
+        0,
+        1,
+        1,
+        0,
+        1
+      ],
+      "direction": {
+        "lower": "east",
+        "upper": "south"
+      },
+      "five_element": {
+        "lower": "wood",
+        "upper": "fire"
+      }
+    },
+    {
+      "number": 22,
+      "name": "山火賁",
+      "reading": "さんかひ",
+      "meaning": "装飾・文明・外見の美",
+      "judgement": "美しさは本質を隠すためでなく、引き立てるために使え。見栄に偏れば空虚になり、質に添えば品格になる。飾りは節度を守れ。",
+      "lower_trigram_number": 3,
+      "upper_trigram_number": 7,
+      "lower_bagua": "li",
+      "upper_bagua": "gen",
+      "lines": [
+        1,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "direction": {
+        "lower": "south",
+        "upper": "north_east"
+      },
+      "five_element": {
+        "lower": "fire",
+        "upper": "earth"
+      }
+    },
+    {
+      "number": 23,
+      "name": "山地剥",
+      "reading": "さんちはく",
+      "meaning": "剥落・崩壊・衰退",
+      "judgement": "削ぎ落とされる局面。失うことを恐れるほど傷は深くなる。守る核を定め、余分を手放せ。崩れの中で次の土台は生まれる。",
+      "lower_trigram_number": 8,
+      "upper_trigram_number": 7,
+      "lower_bagua": "kun",
+      "upper_bagua": "gen",
+      "lines": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "direction": {
+        "lower": "south_west",
+        "upper": "north_east"
+      },
+      "five_element": {
+        "lower": "earth",
+        "upper": "earth"
+      }
+    },
+    {
+      "number": 24,
+      "name": "地雷復",
+      "reading": "ちらいふく",
+      "meaning": "回帰・復活・新たな始まり",
+      "judgement": "行き過ぎた流れが反転し、正しいリズムが戻る。再出発は派手でなくてよい。昨日より一歩まっすぐであれば、復は始まっている。",
+      "lower_trigram_number": 4,
+      "upper_trigram_number": 8,
+      "lower_bagua": "zhen",
+      "upper_bagua": "kun",
+      "lines": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "direction": {
+        "lower": "east",
+        "upper": "south_west"
+      },
+      "five_element": {
+        "lower": "wood",
+        "upper": "earth"
+      }
+    },
+    {
+      "number": 25,
+      "name": "天雷无妄",
+      "reading": "てんらいむもう",
+      "meaning": "無為・自然・純粋な行動",
+      "judgement": "作為を盛るほど道はそれる。打算を脱ぎ、正直な動機で動け。偶然に見える追い風は、無妄の姿勢にだけ味方する。",
+      "lower_trigram_number": 4,
+      "upper_trigram_number": 1,
+      "lower_bagua": "zhen",
+      "upper_bagua": "qian",
+      "lines": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      "direction": {
+        "lower": "east",
+        "upper": "north_west"
+      },
+      "five_element": {
+        "lower": "wood",
+        "upper": "metal"
+      }
+    },
+    {
+      "number": 26,
+      "name": "山天大畜",
+      "reading": "さんてんたいちく",
+      "meaning": "大いなる蓄積・制約",
+      "judgement": "勢いを抑えるのは敗北ではない。力・知恵・資源を深く蓄える戦略だ。噴き上がる衝動を制した者が、遠くまで届く。",
+      "lower_trigram_number": 1,
+      "upper_trigram_number": 7,
+      "lower_bagua": "qian",
+      "upper_bagua": "gen",
+      "lines": [
+        1,
+        1,
+        1,
+        1,
+        0,
+        0
+      ],
+      "direction": {
+        "lower": "north_west",
+        "upper": "north_east"
+      },
+      "five_element": {
+        "lower": "metal",
+        "upper": "earth"
+      }
+    },
+    {
+      "number": 27,
+      "name": "山雷頤",
+      "reading": "さんらいい",
+      "meaning": "養う・育む・口を慎む",
+      "judgement": "何を口にし、何を語るかが運命を養う。体の糧だけでなく、心の糧も選び直せ。言葉の質は人生の質に直結する。",
+      "lower_trigram_number": 4,
+      "upper_trigram_number": 7,
+      "lower_bagua": "zhen",
+      "upper_bagua": "gen",
+      "lines": [
+        0,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "direction": {
+        "lower": "east",
+        "upper": "north_east"
+      },
+      "five_element": {
+        "lower": "wood",
+        "upper": "earth"
+      }
+    },
+    {
+      "number": 28,
+      "name": "沢風大過",
+      "reading": "たくふうたいか",
+      "meaning": "過剰・限界・大きな過ち",
+      "judgement": "荷重は限界に近い。平常手段で耐えるより、構造を大胆に組み替えよ。非常時には非常の決断が、かえって中庸を守る。",
+      "lower_trigram_number": 5,
+      "upper_trigram_number": 2,
+      "lower_bagua": "xun",
+      "upper_bagua": "dui",
+      "lines": [
+        1,
+        1,
+        0,
+        0,
+        1,
+        1
+      ],
+      "direction": {
+        "lower": "south_east",
+        "upper": "west"
+      },
+      "five_element": {
+        "lower": "wood",
+        "upper": "metal"
+      }
+    },
+    {
+      "number": 29,
+      "name": "坎為水",
+      "reading": "かんいすい",
+      "meaning": "険難・試練・危険",
+      "judgement": "試練は一度で終わらない。だからこそ誠を失うな。恐れを消すのでなく、恐れと共に正しく渡る技を身につけよ。",
+      "lower_trigram_number": 6,
+      "upper_trigram_number": 6,
+      "lower_bagua": "kan",
+      "upper_bagua": "kan",
+      "lines": [
+        0,
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "direction": {
+        "lower": "north",
+        "upper": "north"
+      },
+      "five_element": {
+        "lower": "water",
+        "upper": "water"
+      }
+    },
+    {
+      "number": 30,
+      "name": "離為火",
+      "reading": "りいか",
+      "meaning": "輝き・依存・明快",
+      "judgement": "明るさは独りでは保てない。何に依り、誰と連なるかを選べ。見せる光より、照らす光を育てると道は澄んでいく。",
+      "lower_trigram_number": 3,
+      "upper_trigram_number": 3,
+      "lower_bagua": "li",
+      "upper_bagua": "li",
+      "lines": [
+        1,
+        0,
+        1,
+        1,
+        0,
+        1
+      ],
+      "direction": {
+        "lower": "south",
+        "upper": "south"
+      },
+      "five_element": {
+        "lower": "fire",
+        "upper": "fire"
+      }
+    },
+    {
+      "number": 31,
+      "name": "沢山咸",
+      "reading": "たくざんかん",
+      "meaning": "感応・交感・引き合い",
+      "judgement": "心が動く出会いは理屈より先に訪れる。だが衝動だけで決めるな。敬意と節度を伴った感応だけが、長い縁に変わる。",
+      "lower_trigram_number": 7,
+      "upper_trigram_number": 2,
+      "lower_bagua": "gen",
+      "upper_bagua": "dui",
+      "lines": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "direction": {
+        "lower": "north_east",
+        "upper": "west"
+      },
+      "five_element": {
+        "lower": "earth",
+        "upper": "metal"
+      }
+    },
+    {
+      "number": 32,
+      "name": "雷風恒",
+      "reading": "らいふうこう",
+      "meaning": "恒久・継続・不変",
+      "judgement": "続ける力は才能より設計で生まれる。熱量の波に依存せず、守る約束を決めよ。恒は同じことの反復ではなく、軸の持続だ。",
+      "lower_trigram_number": 5,
+      "upper_trigram_number": 4,
+      "lower_bagua": "xun",
+      "upper_bagua": "zhen",
+      "lines": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "direction": {
+        "lower": "south_east",
+        "upper": "east"
+      },
+      "five_element": {
+        "lower": "wood",
+        "upper": "wood"
+      }
+    },
+    {
+      "number": 33,
+      "name": "天山遯",
+      "reading": "てんざんとん",
+      "meaning": "退却・隠遁・引き下がる",
+      "judgement": "退くべき時に退ける人は、未来を失わない。敗走ではなく戦略的撤収と捉えよ。距離を取ることで、守るべき価値が明瞭になる。",
+      "lower_trigram_number": 7,
+      "upper_trigram_number": 1,
+      "lower_bagua": "gen",
+      "upper_bagua": "qian",
+      "lines": [
+        1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "direction": {
+        "lower": "north_east",
+        "upper": "north_west"
+      },
+      "five_element": {
+        "lower": "earth",
+        "upper": "metal"
+      }
+    },
+    {
+      "number": 34,
+      "name": "雷天大壮",
+      "reading": "らいてんたいそう",
+      "meaning": "大いなる力・勢力",
+      "judgement": "力が正義になるのではない。正しさに従う力だけが大壮となる。勢いで押し切る前に、その一歩が礼を踏んでいるか確かめよ。",
+      "lower_trigram_number": 1,
+      "upper_trigram_number": 4,
+      "lower_bagua": "qian",
+      "upper_bagua": "zhen",
+      "lines": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        1
+      ],
+      "direction": {
+        "lower": "north_west",
+        "upper": "east"
+      },
+      "five_element": {
+        "lower": "metal",
+        "upper": "wood"
+      }
+    },
+    {
+      "number": 35,
+      "name": "火地晋",
+      "reading": "かちしん",
+      "meaning": "進歩・前進・昇進",
+      "judgement": "評価が集まり、前へ出る機会が増える。見える成果の裏で、見えない徳を減らすな。昇るほど謙虚さは必須になる。",
+      "lower_trigram_number": 8,
+      "upper_trigram_number": 3,
+      "lower_bagua": "kun",
+      "upper_bagua": "li",
+      "lines": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        1
+      ],
+      "direction": {
+        "lower": "south_west",
+        "upper": "south"
+      },
+      "five_element": {
+        "lower": "earth",
+        "upper": "fire"
+      }
+    },
+    {
+      "number": 36,
+      "name": "地火明夷",
+      "reading": "ちかめいい",
+      "meaning": "暗闇・逆境・光を隠す",
+      "judgement": "正しさを叫ぶほど危うい局面。いまは光を守るために隠す勇気を持て。屈したのではない、火を絶やさぬための戦略だ。",
+      "lower_trigram_number": 3,
+      "upper_trigram_number": 8,
+      "lower_bagua": "li",
+      "upper_bagua": "kun",
+      "lines": [
+        1,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "direction": {
+        "lower": "south",
+        "upper": "south_west"
+      },
+      "five_element": {
+        "lower": "fire",
+        "upper": "earth"
+      }
+    },
+    {
+      "number": 37,
+      "name": "風火家人",
+      "reading": "ふうかかじん",
+      "meaning": "家族・家庭・役割",
+      "judgement": "身近な関係の乱れは、外の運気をも乱す。役割を押しつけるのでなく、責任を分かち合え。家庭の秩序は社会の縮図である。",
+      "lower_trigram_number": 3,
+      "upper_trigram_number": 5,
+      "lower_bagua": "li",
+      "upper_bagua": "xun",
+      "lines": [
+        1,
+        0,
+        1,
+        1,
+        1,
+        0
+      ],
+      "direction": {
+        "lower": "south",
+        "upper": "south_east"
+      },
+      "five_element": {
+        "lower": "fire",
+        "upper": "wood"
+      }
+    },
+    {
+      "number": 38,
+      "name": "火沢睽",
+      "reading": "かたくけい",
+      "meaning": "乖離・相違・反目",
+      "judgement": "同じ景色を見ていても解釈は分かれる。全面一致を求めず、小さな一致点を丁寧に育てよ。違いを敵意にしない技が必要だ。",
+      "lower_trigram_number": 2,
+      "upper_trigram_number": 3,
+      "lower_bagua": "dui",
+      "upper_bagua": "li",
+      "lines": [
+        0,
+        1,
+        1,
+        1,
+        0,
+        1
+      ],
+      "direction": {
+        "lower": "west",
+        "upper": "south"
+      },
+      "five_element": {
+        "lower": "metal",
+        "upper": "fire"
+      }
+    },
+    {
+      "number": 39,
+      "name": "水山蹇",
+      "reading": "すいざんけん",
+      "meaning": "困難・障害・足踏み",
+      "judgement": "前に壁、後ろに不安。進みにくい時は方向を変え、助けを借りよ。孤高を美徳にすると消耗する。難は連携で越えるものだ。",
+      "lower_trigram_number": 7,
+      "upper_trigram_number": 6,
+      "lower_bagua": "gen",
+      "upper_bagua": "kan",
+      "lines": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "direction": {
+        "lower": "north_east",
+        "upper": "north"
+      },
+      "five_element": {
+        "lower": "earth",
+        "upper": "water"
+      }
+    },
+    {
+      "number": 40,
+      "name": "雷水解",
+      "reading": "らいすいかい",
+      "meaning": "解放・解決・緊張の緩和",
+      "judgement": "ほどける時は、握りしめていたものを離す時。正しさの執着や古い怒りを解け。解放は勝利の瞬間ではなく、再生の入口だ。",
+      "lower_trigram_number": 6,
+      "upper_trigram_number": 4,
+      "lower_bagua": "kan",
+      "upper_bagua": "zhen",
+      "lines": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "direction": {
+        "lower": "north",
+        "upper": "east"
+      },
+      "five_element": {
+        "lower": "water",
+        "upper": "wood"
+      }
+    },
+    {
+      "number": 41,
+      "name": "山沢損",
+      "reading": "さんたくそん",
+      "meaning": "減少・献身・犠牲",
+      "judgement": "減らすことは貧しさではない。余分を削り、本質へ資源を集める選択だ。痛みのある節制は、やがて大きな信頼を生む。",
+      "lower_trigram_number": 2,
+      "upper_trigram_number": 7,
+      "lower_bagua": "dui",
+      "upper_bagua": "gen",
+      "lines": [
+        0,
+        1,
+        1,
+        1,
+        0,
+        0
+      ],
+      "direction": {
+        "lower": "west",
+        "upper": "north_east"
+      },
+      "five_element": {
+        "lower": "metal",
+        "upper": "earth"
+      }
+    },
+    {
+      "number": 42,
+      "name": "風雷益",
+      "reading": "ふうらいえき",
+      "meaning": "増益・利益・成長",
+      "judgement": "増やしたいなら、まず与えよ。上が身を削り下を潤すと、全体の力は増幅する。自分だけの得を追うほど、益は細る。",
+      "lower_trigram_number": 4,
+      "upper_trigram_number": 5,
+      "lower_bagua": "zhen",
+      "upper_bagua": "xun",
+      "lines": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        0
+      ],
+      "direction": {
+        "lower": "east",
+        "upper": "south_east"
+      },
+      "five_element": {
+        "lower": "wood",
+        "upper": "wood"
+      }
+    },
+    {
+      "number": 43,
+      "name": "沢天夬",
+      "reading": "たくてんかい",
+      "meaning": "決断・突破・明快",
+      "judgement": "曖昧を断ち、宣言して進む局面。だが強硬さだけでは夬にならない。公明正大に言葉を尽くし、私怨を混ぜずに断て。",
+      "lower_trigram_number": 1,
+      "upper_trigram_number": 2,
+      "lower_bagua": "qian",
+      "upper_bagua": "dui",
+      "lines": [
+        1,
+        1,
+        1,
+        0,
+        1,
+        1
+      ],
+      "direction": {
+        "lower": "north_west",
+        "upper": "west"
+      },
+      "five_element": {
+        "lower": "metal",
+        "upper": "metal"
+      }
+    },
+    {
+      "number": 44,
+      "name": "天風姤",
+      "reading": "てんぷうこう",
+      "meaning": "出会い・誘惑・偶然の遭遇",
+      "judgement": "強い引力を持つ出会いが突然来る。魅力と危うさは同時に現れるもの。境界線を先に決め、流される前に姿勢を正せ。",
+      "lower_trigram_number": 5,
+      "upper_trigram_number": 1,
+      "lower_bagua": "xun",
+      "upper_bagua": "qian",
+      "lines": [
+        1,
+        1,
+        0,
+        1,
+        1,
+        1
+      ],
+      "direction": {
+        "lower": "south_east",
+        "upper": "north_west"
+      },
+      "five_element": {
+        "lower": "wood",
+        "upper": "metal"
+      }
+    },
+    {
+      "number": 45,
+      "name": "沢地萃",
+      "reading": "たくちすい",
+      "meaning": "集合・結集・団結",
+      "judgement": "人が集まる時は、中心の徳が試される。数を誇るより、目的を清めよ。祭のように心を一つにする場づくりが成否を分ける。",
+      "lower_trigram_number": 8,
+      "upper_trigram_number": 2,
+      "lower_bagua": "kun",
+      "upper_bagua": "dui",
+      "lines": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "direction": {
+        "lower": "south_west",
+        "upper": "west"
+      },
+      "five_element": {
+        "lower": "earth",
+        "upper": "metal"
+      }
+    },
+    {
+      "number": 46,
+      "name": "地風升",
+      "reading": "ちふうしょう",
+      "meaning": "上昇・昇進・着実な成長",
+      "judgement": "急騰ではなく、地中から芽が伸びるような上昇。焦らず徳を積み、節目ごとに礼を尽くせ。着実さは遅いようで最も強い。",
+      "lower_trigram_number": 5,
+      "upper_trigram_number": 8,
+      "lower_bagua": "xun",
+      "upper_bagua": "kun",
+      "lines": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "direction": {
+        "lower": "south_east",
+        "upper": "south_west"
+      },
+      "five_element": {
+        "lower": "wood",
+        "upper": "earth"
+      }
+    },
+    {
+      "number": 47,
+      "name": "沢水困",
+      "reading": "たくすいこん",
+      "meaning": "困窮・苦境・行き詰まり",
+      "judgement": "外の条件が閉ざされる時、内の芯が露わになる。不遇を嘆くより、誠を守れ。困を越える鍵は、声の大きさより人格の深さだ。",
+      "lower_trigram_number": 6,
+      "upper_trigram_number": 2,
+      "lower_bagua": "kan",
+      "upper_bagua": "dui",
+      "lines": [
+        0,
+        1,
+        0,
+        0,
+        1,
+        1
+      ],
+      "direction": {
+        "lower": "north",
+        "upper": "west"
+      },
+      "five_element": {
+        "lower": "water",
+        "upper": "metal"
+      }
+    },
+    {
+      "number": 48,
+      "name": "水風井",
+      "reading": "すいふうせい",
+      "meaning": "井戸・源泉・不変の価値",
+      "judgement": "時代が変わっても、井戸の価値は変わらない。仕組みを変えても源泉を汚すな。共同体を生かす基盤を手入れし続けよ。",
+      "lower_trigram_number": 5,
+      "upper_trigram_number": 6,
+      "lower_bagua": "xun",
+      "upper_bagua": "kan",
+      "lines": [
+        1,
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "direction": {
+        "lower": "south_east",
+        "upper": "north"
+      },
+      "five_element": {
+        "lower": "wood",
+        "upper": "water"
+      }
+    },
+    {
+      "number": 49,
+      "name": "沢火革",
+      "reading": "たくかかく",
+      "meaning": "変革・革命・改革",
+      "judgement": "変革は勢いでなく時で決まる。機が熟したら恐れず改めよ。昨日の正解に忠誠を誓い続けることこそ、最大の停滞になる。",
+      "lower_trigram_number": 3,
+      "upper_trigram_number": 2,
+      "lower_bagua": "li",
+      "upper_bagua": "dui",
+      "lines": [
+        1,
+        0,
+        1,
+        0,
+        1,
+        1
+      ],
+      "direction": {
+        "lower": "south",
+        "upper": "west"
+      },
+      "five_element": {
+        "lower": "fire",
+        "upper": "metal"
+      }
+    },
+    {
+      "number": 50,
+      "name": "火風鼎",
+      "reading": "かふうてい",
+      "meaning": "鼎・変容・新秩序",
+      "judgement": "素材を煮て別物に変える鼎の時。人材・文化・制度を再編し、新しい器をつくれ。変容には熱と秩序の両方が要る。",
+      "lower_trigram_number": 5,
+      "upper_trigram_number": 3,
+      "lower_bagua": "xun",
+      "upper_bagua": "li",
+      "lines": [
+        1,
+        1,
+        0,
+        1,
+        0,
+        1
+      ],
+      "direction": {
+        "lower": "south_east",
+        "upper": "south"
+      },
+      "five_element": {
+        "lower": "wood",
+        "upper": "fire"
+      }
+    },
+    {
+      "number": 51,
+      "name": "震為雷",
+      "reading": "しんいらい",
+      "meaning": "雷・衝撃・覚醒",
+      "judgement": "不意の衝撃が眠りを破る。動揺は自然だが、そこで我を失うな。怖れを通過したあとに、真の目覚めと笑いが戻ってくる。",
+      "lower_trigram_number": 4,
+      "upper_trigram_number": 4,
+      "lower_bagua": "zhen",
+      "upper_bagua": "zhen",
+      "lines": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      "direction": {
+        "lower": "east",
+        "upper": "east"
+      },
+      "five_element": {
+        "lower": "wood",
+        "upper": "wood"
+      }
+    },
+    {
+      "number": 52,
+      "name": "艮為山",
+      "reading": "ごんいざん",
+      "meaning": "静止・静寂・止まる",
+      "judgement": "止まるべきところで止まれるか。これが成熟の試験になる。反応を急がず、背を据えて心を静めよ。静止は後退ではなく統御だ。",
+      "lower_trigram_number": 7,
+      "upper_trigram_number": 7,
+      "lower_bagua": "gen",
+      "upper_bagua": "gen",
+      "lines": [
+        1,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "direction": {
+        "lower": "north_east",
+        "upper": "north_east"
+      },
+      "five_element": {
+        "lower": "earth",
+        "upper": "earth"
+      }
+    },
+    {
+      "number": 53,
+      "name": "風山漸",
+      "reading": "ふうざんぜん",
+      "meaning": "漸進・段階的発展・着実",
+      "judgement": "飛び級の成功を狙うほど土台は弱る。順序を尊び、段階を踏め。遅く見える歩みが、結果として最も崩れにくい道になる。",
+      "lower_trigram_number": 7,
+      "upper_trigram_number": 5,
+      "lower_bagua": "gen",
+      "upper_bagua": "xun",
+      "lines": [
+        1,
+        0,
+        0,
+        1,
+        1,
+        0
+      ],
+      "direction": {
+        "lower": "north_east",
+        "upper": "south_east"
+      },
+      "five_element": {
+        "lower": "earth",
+        "upper": "wood"
+      }
+    },
+    {
+      "number": 54,
+      "name": "雷沢帰妹",
+      "reading": "らいたくきまい",
+      "meaning": "嫁ぐ・関係・従属",
+      "judgement": "関係に入る時、自分の立場を見誤るな。情熱だけで契約すると後で苦しむ。対等でない場ほど、境界と礼節を明確にせよ。",
+      "lower_trigram_number": 2,
+      "upper_trigram_number": 4,
+      "lower_bagua": "dui",
+      "upper_bagua": "zhen",
+      "lines": [
+        0,
+        1,
+        1,
+        0,
+        0,
+        1
+      ],
+      "direction": {
+        "lower": "west",
+        "upper": "east"
+      },
+      "five_element": {
+        "lower": "metal",
+        "upper": "wood"
+      }
+    },
+    {
+      "number": 55,
+      "name": "雷火豊",
+      "reading": "らいかほう",
+      "meaning": "豊かさ・最盛期・栄光",
+      "judgement": "光が満ちる最盛期。だが頂点は永続しない。盛時に次の備えを始められる者だけが、豊を一過性で終わらせない。",
+      "lower_trigram_number": 3,
+      "upper_trigram_number": 4,
+      "lower_bagua": "li",
+      "upper_bagua": "zhen",
+      "lines": [
+        1,
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      "direction": {
+        "lower": "south",
+        "upper": "east"
+      },
+      "five_element": {
+        "lower": "fire",
+        "upper": "wood"
+      }
+    },
+    {
+      "number": 56,
+      "name": "火山旅",
+      "reading": "かざんりょ",
+      "meaning": "旅・流浪・異境",
+      "judgement": "居場所が定まらぬ時は、礼儀があなたの家になる。仮の立場を侮らず、足跡を丁寧に残せ。旅先の振る舞いが次の扉を開く。",
+      "lower_trigram_number": 7,
+      "upper_trigram_number": 3,
+      "lower_bagua": "gen",
+      "upper_bagua": "li",
+      "lines": [
+        1,
+        0,
+        0,
+        1,
+        0,
+        1
+      ],
+      "direction": {
+        "lower": "north_east",
+        "upper": "south"
+      },
+      "five_element": {
+        "lower": "earth",
+        "upper": "fire"
+      }
+    },
+    {
+      "number": 57,
+      "name": "巽為風",
+      "reading": "そんいふう",
+      "meaning": "柔順・浸透・従う",
+      "judgement": "硬さで折れない壁も、風のような継続で動く。柔らかく入り、深く届かせよ。主張は鋭くても、伝え方はしなやかであれ。",
+      "lower_trigram_number": 5,
+      "upper_trigram_number": 5,
+      "lower_bagua": "xun",
+      "upper_bagua": "xun",
+      "lines": [
+        1,
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "direction": {
+        "lower": "south_east",
+        "upper": "south_east"
+      },
+      "five_element": {
+        "lower": "wood",
+        "upper": "wood"
+      }
+    },
+    {
+      "number": 58,
+      "name": "兌為沢",
+      "reading": "だいたく",
+      "meaning": "喜び・説得・交流",
+      "judgement": "喜びは消費すると薄れ、分かち合うと深まる。対話で人を動かすなら、耳を開くことから始めよ。笑顔の裏の誠実さが鍵になる。",
+      "lower_trigram_number": 2,
+      "upper_trigram_number": 2,
+      "lower_bagua": "dui",
+      "upper_bagua": "dui",
+      "lines": [
+        0,
+        1,
+        1,
+        0,
+        1,
+        1
+      ],
+      "direction": {
+        "lower": "west",
+        "upper": "west"
+      },
+      "five_element": {
+        "lower": "metal",
+        "upper": "metal"
+      }
+    },
+    {
+      "number": 59,
+      "name": "風水渙",
+      "reading": "ふうすいかん",
+      "meaning": "離散・分散・統合",
+      "judgement": "散った心を責めるな。まず中心へ戻る儀式を持て。共通の意味を再確認すると、離散は再編のチャンスへ反転する。",
+      "lower_trigram_number": 6,
+      "upper_trigram_number": 5,
+      "lower_bagua": "kan",
+      "upper_bagua": "xun",
+      "lines": [
+        0,
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "direction": {
+        "lower": "north",
+        "upper": "south_east"
+      },
+      "five_element": {
+        "lower": "water",
+        "upper": "wood"
+      }
+    },
+    {
+      "number": 60,
+      "name": "水沢節",
+      "reading": "すいたくせつ",
+      "meaning": "節制・制限・中庸",
+      "judgement": "節度は自由を奪うためでなく、自由を守るためにある。厳しすぎれば息が詰まり、緩すぎれば崩れる。続く形に調律せよ。",
+      "lower_trigram_number": 2,
+      "upper_trigram_number": 6,
+      "lower_bagua": "dui",
+      "upper_bagua": "kan",
+      "lines": [
+        0,
+        1,
+        1,
+        0,
+        1,
+        0
+      ],
+      "direction": {
+        "lower": "west",
+        "upper": "north"
+      },
+      "five_element": {
+        "lower": "metal",
+        "upper": "water"
+      }
+    },
+    {
+      "number": 61,
+      "name": "風沢中孚",
+      "reading": "ふうたくちゅうふ",
+      "meaning": "誠信・内なる誠実さ",
+      "judgement": "言葉より先に心の真実は伝わる。小さな誠の積み重ねが、難事をも動かす。中孚とは他人を説得する前に己を偽らぬことだ。",
+      "lower_trigram_number": 2,
+      "upper_trigram_number": 5,
+      "lower_bagua": "dui",
+      "upper_bagua": "xun",
+      "lines": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "direction": {
+        "lower": "west",
+        "upper": "south_east"
+      },
+      "five_element": {
+        "lower": "metal",
+        "upper": "wood"
+      }
+    },
+    {
+      "number": 62,
+      "name": "雷山小過",
+      "reading": "らいざんしょうか",
+      "meaning": "小さな過ち・慎重さ",
+      "judgement": "大技を狙う局面ではない。細部を正し、小事を丁寧に仕上げよ。控えめな最適化が、結果として大きな失敗を防ぐ。",
+      "lower_trigram_number": 7,
+      "upper_trigram_number": 4,
+      "lower_bagua": "gen",
+      "upper_bagua": "zhen",
+      "lines": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "direction": {
+        "lower": "north_east",
+        "upper": "east"
+      },
+      "five_element": {
+        "lower": "earth",
+        "upper": "wood"
+      }
+    },
+    {
+      "number": 63,
+      "name": "水火既済",
+      "reading": "すいかきさい",
+      "meaning": "完成・成就・完了",
+      "judgement": "成し遂げた直後こそ乱れの芽が出る。完了は終わりではなく、維持管理の始まりだ。達成感の中で次の崩れを予防せよ。",
+      "lower_trigram_number": 3,
+      "upper_trigram_number": 6,
+      "lower_bagua": "li",
+      "upper_bagua": "kan",
+      "lines": [
+        1,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "direction": {
+        "lower": "south",
+        "upper": "north"
+      },
+      "five_element": {
+        "lower": "fire",
+        "upper": "water"
+      }
+    },
+    {
+      "number": 64,
+      "name": "火水未済",
+      "reading": "かすいびさい",
+      "meaning": "未完成・移行期・可能性",
+      "judgement": "未完成は欠陥ではない。可能性がまだ閉じていないということだ。急いで形を決めず、最後の一手を慎重に選べ。",
+      "lower_trigram_number": 6,
+      "upper_trigram_number": 3,
+      "lower_bagua": "kan",
+      "upper_bagua": "li",
+      "lines": [
+        0,
+        1,
+        0,
+        1,
+        0,
+        1
+      ],
+      "direction": {
+        "lower": "north",
+        "upper": "south"
+      },
+      "five_element": {
+        "lower": "water",
+        "upper": "fire"
+      }
+    }
+  ]
+}

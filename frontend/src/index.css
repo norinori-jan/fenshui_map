@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  iOS Safari でのバウンススクロールを無効化。
+  地図アプリでは画面全体が地図になるため必須。
+*/
+html,
+body,
+#root {
+  height: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
+  /* iOS Safari の安全エリアを CSS 変数として有効にする */
+  padding: env(safe-area-inset-top, 0) env(safe-area-inset-right, 0)
+    env(safe-area-inset-bottom, 0) env(safe-area-inset-left, 0);
+  box-sizing: border-box;
+}
+
+/* ソフトキーボード表示時に高さ計算が崩れにくいように dvh を明示 */
+:root {
+  --app-vh: 100dvh;
+}
+
+/* Google Maps UI のテキスト選択を無効化（誤操作防止） */
+.gm-style * {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* iOS Safari の自動ズーム防止: 入力 UI を追加しても 16px 以上を維持 */
+input,
+textarea,
+select,
+button {
+  font-size: 16px;
+}

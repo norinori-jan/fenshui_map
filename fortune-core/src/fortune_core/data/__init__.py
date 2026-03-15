@@ -1,0 +1,1 @@
+PACKAGE_NAME = "fortune_core.data"
