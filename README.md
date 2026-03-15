@@ -137,10 +137,13 @@ export GCP_PROJECT_ID="your-project-id"
 export GEMINI_API_KEY="***"
 export GOOGLE_MAPS_API_KEY_SERVER="***"
 export GOOGLE_SHEETS_ID="***"
-export GOOGLE_APPLICATION_CREDENTIALS_JSON='{"type":"service_account",...}'
 
 bash scripts/set_gcp_secrets.sh
 ```
+
+補足: GitHub Actions は WIF（Workload Identity Federation）で認証するため、
+`GOOGLE_APPLICATION_CREDENTIALS_JSON` を GitHub Secrets に置く必要はありません。
+`app/sheets.py` は実行時に ADC（Cloud Run のサービスアカウント）を優先して利用します。
 
 ### 3) Cloud Run へデプロイ
 
@@ -192,4 +195,3 @@ firebase deploy --only hosting
 - `GEMINI_API_KEY`
 - `GOOGLE_MAPS_API_KEY_SERVER`
 - `GOOGLE_SHEETS_ID`
-- `GOOGLE_APPLICATION_CREDENTIALS_JSON`

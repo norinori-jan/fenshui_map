@@ -21,6 +21,6 @@ gcloud run deploy "$SERVICE" \
   --region "$REGION" \
   --source . \
   --allow-unauthenticated \
-  --set-secrets GEMINI_API_KEY=GEMINI_API_KEY:latest,GOOGLE_MAPS_API_KEY=GOOGLE_MAPS_API_KEY_SERVER:latest,GOOGLE_SHEETS_ID=GOOGLE_SHEETS_ID:latest,GOOGLE_APPLICATION_CREDENTIALS_JSON=GOOGLE_APPLICATION_CREDENTIALS_JSON:latest
+  --set-secrets GEMINI_API_KEY=GEMINI_API_KEY:latest,GOOGLE_MAPS_API_KEY=GOOGLE_MAPS_API_KEY_SERVER:latest,GOOGLE_SHEETS_ID=GOOGLE_SHEETS_ID:latest
 
 echo "Cloud Run deployment completed: $SERVICE ($REGION)"

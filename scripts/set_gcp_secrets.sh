@@ -6,7 +6,6 @@ set -euo pipefail
 #   export GEMINI_API_KEY="..."
 #   export GOOGLE_MAPS_API_KEY_SERVER="..."      # Elevation/Places のサーバー利用用
 #   export GOOGLE_SHEETS_ID="..."
-#   export GOOGLE_APPLICATION_CREDENTIALS_JSON='{"type":"service_account",...}'
 #   ./scripts/set_gcp_secrets.sh
 
 required_vars=(
@@ -14,7 +13,6 @@ required_vars=(
   GEMINI_API_KEY
   GOOGLE_MAPS_API_KEY_SERVER
   GOOGLE_SHEETS_ID
-  GOOGLE_APPLICATION_CREDENTIALS_JSON
 )
 
 for v in "${required_vars[@]}"; do
@@ -38,6 +36,5 @@ create_or_update_secret() {
 create_or_update_secret "GEMINI_API_KEY" "$GEMINI_API_KEY"
 create_or_update_secret "GOOGLE_MAPS_API_KEY_SERVER" "$GOOGLE_MAPS_API_KEY_SERVER"
 create_or_update_secret "GOOGLE_SHEETS_ID" "$GOOGLE_SHEETS_ID"
-create_or_update_secret "GOOGLE_APPLICATION_CREDENTIALS_JSON" "$GOOGLE_APPLICATION_CREDENTIALS_JSON"
 
 echo "Secrets have been created/updated in Secret Manager."

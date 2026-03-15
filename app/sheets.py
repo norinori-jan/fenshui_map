@@ -2,15 +2,15 @@
 
 必要な環境変数:
   GOOGLE_SHEETS_ID                  -- 記録先スプレッドシートの ID
-  GOOGLE_APPLICATION_CREDENTIALS_JSON -- サービスアカウント JSON を文字列で (推奨)
-  GOOGLE_APPLICATION_CREDENTIALS      -- サービスアカウント JSON ファイルパス (代替)
+    GOOGLE_APPLICATION_CREDENTIALS_JSON -- サービスアカウント JSON を文字列で (任意)
+    GOOGLE_APPLICATION_CREDENTIALS      -- サービスアカウント JSON ファイルパス (任意)
 
-Cloud Run / Cloud Functions では GOOGLE_APPLICATION_CREDENTIALS_JSON を
-Secret Manager から注入するのが安全です。ファイルパス形式はローカル開発向け。
+Cloud Run / Cloud Functions では、上記が未設定でも ADC
+（Application Default Credentials）を使って実行環境のサービスアカウントで認証します。
 
 事前準備:
-  1. Google Cloud Console でサービスアカウントを作成し、キー (JSON) をダウンロード。
-  2. 対象スプレッドシートの共有設定でそのサービスアカウントのメールに「編集者」権限を付与。
+    1. 対象スプレッドシートの共有設定で、実行に使うサービスアカウントへ「編集者」権限を付与。
+    2. 必要ならローカル開発用に GOOGLE_APPLICATION_CREDENTIALS(_JSON) を設定。
   3. Google Sheets API を Cloud Console で有効化。
 """
 
@@ -20,6 +20,7 @@ import os
 from datetime import datetime, timezone
 
 import gspread
+import google.auth
 from google.oauth2.service_account import Credentials
 
 from app.modules.feng_shui.models import FengShuiAnalysisResult
@@ -42,19 +43,20 @@ _HEADER = [
 
 
 def _build_client() -> gspread.Client:
-    """環境変数からサービスアカウント認証情報を読み込む。"""
+    """環境変数または ADC からサービスアカウント認証情報を読み込む。"""
     inline_json = os.getenv("GOOGLE_APPLICATION_CREDENTIALS_JSON")
     if inline_json:
         info = json.loads(inline_json)
         creds = Credentials.from_service_account_info(info, scopes=_SCOPES)
-    else:
-        path = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
-        if not path:
-            raise RuntimeError(
-                "GOOGLE_APPLICATION_CREDENTIALS_JSON または "
-                "GOOGLE_APPLICATION_CREDENTIALS を設定してください。"
-            )
+        return gspread.authorize(creds)
+
+    path = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
+    if path:
         creds = Credentials.from_service_account_file(path, scopes=_SCOPES)
+        return gspread.authorize(creds)
+
+    # Cloud Run では実行サービスアカウントの ADC を優先利用
+    creds, _ = google.auth.default(scopes=_SCOPES)
     return gspread.authorize(creds)
 
 
