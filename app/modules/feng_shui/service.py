@@ -1,6 +1,7 @@
 import json
 import math
 import os
+import re
 from dataclasses import asdict
 from typing import Any
 from urllib.parse import urlencode
@@ -148,7 +149,47 @@ def _parse_json_block(text: str) -> dict[str, Any]:
         cleaned = cleaned.strip("`")
         if cleaned.startswith("json"):
             cleaned = cleaned[4:]
-    return json.loads(cleaned.strip())
+
+    stripped = cleaned.strip()
+    try:
+        return json.loads(stripped)
+    except json.JSONDecodeError:
+        # 応答に前後テキストが混ざるケースを吸収する
+        match = re.search(r"\{[\s\S]*\}", stripped)
+        if not match:
+            raise
+        return json.loads(match.group(0))
+
+
+def _default_model_payload(reason: str) -> dict[str, Any]:
+    return {
+        "observations": {
+            "terrain": {
+                "summary": f"Grounding unavailable: {reason}",
+                "north_higher_than_south": None,
+                "south_more_open": None,
+                "east_west_support": "unknown",
+                "confidence": "low",
+            },
+            "roads": {
+                "summary": "Road assessment unavailable",
+                "road_collision_risk": None,
+                "confidence": "low",
+            },
+            "water": {
+                "summary": "Water assessment unavailable",
+                "confidence": "low",
+            },
+        },
+        "advice": {
+            "overall_judgement": "外部地図鑑定サービスの応答が不安定なため、地形データ中心の暫定判定です。",
+            "recommendations": [
+                "周辺道路と開口方向を現地で再確認してください。",
+                "時間をおいて再鑑定すると精度が上がる場合があります。",
+            ],
+            "cautions": ["この結果は簡易モードです。"],
+        },
+    }
 
 
 def _grounding_is_sparse(model_payload: dict[str, Any]) -> bool:
@@ -385,60 +426,38 @@ def analyze_feng_shui_location(
     maps_api_key: str | None = None,
 ) -> FengShuiAnalysisResult:
     gemini_api_key = gemini_api_key or os.getenv("GEMINI_API_KEY")
-    if not gemini_api_key:
-        raise RuntimeError("GEMINI_API_KEY is required.")
 
     # --- A. 国土地理院APIで標高プロファイルを事前取得（APIキー不要、RAG的注入）---
-    gsi_profile = fetch_gsi_terrain_profile(lat, lng)
+    try:
+        gsi_profile = fetch_gsi_terrain_profile(lat, lng)
+    except Exception:
+        gsi_profile = TerrainProfile(
+            center_elevation_m=None,
+            north_avg_elevation_m=None,
+            south_avg_elevation_m=None,
+            east_avg_elevation_m=None,
+            west_avg_elevation_m=None,
+            sample_count=0,
+            data_source=ElevationSource.UNKNOWN,
+            samples=[],
+        )
 
-    client = genai.Client(api_key=gemini_api_key)
+    model_payload = _default_model_payload("gemini disabled")
+    if gemini_api_key:
+        try:
+            client = genai.Client(api_key=gemini_api_key)
 
-    # --- A. Google Maps Grounding（動的・施設情報）---
-    maps_tool = types.Tool(google_maps=types.GoogleMaps())
-    # --- B. 国土地理院 Function Calling（追加標高の動的取得）---
-    gsi_tool = types.Tool(function_declarations=[_GSI_ELEVATION_DECLARATION])
-    tools = [maps_tool, gsi_tool]
+            # --- A. Google Maps Grounding（動的・施設情報）---
+            maps_tool = types.Tool(google_maps=types.GoogleMaps())
+            # --- B. 国土地理院 Function Calling（追加標高の動的取得）---
+            gsi_tool = types.Tool(function_declarations=[_GSI_ELEVATION_DECLARATION])
+            tools = [maps_tool, gsi_tool]
 
-    prompt = _build_maps_prompt(lat, lng, gsi_profile=gsi_profile)
+            prompt = _build_maps_prompt(lat, lng, gsi_profile=gsi_profile)
 
-    response = client.models.generate_content(
-        model=model,
-        contents=prompt,
-        config=types.GenerateContentConfig(
-            tools=tools,
-            temperature=0.2,
-            response_mime_type="application/json",
-        ),
-    )
-
-    # --- Function Calling ハンドリング（最大1ラウンドトリップ）---
-    first_candidate = (getattr(response, "candidates", None) or [None])[0]
-    first_content = getattr(first_candidate, "content", None)
-    if first_content:
-        fn_response_parts: list[Any] = []
-        for part in getattr(first_content, "parts", []) or []:
-            fc = getattr(part, "function_call", None)
-            if fc and fc.name == "get_gsi_elevation":
-                args = fc.args or {}
-                pt_lat = float(args.get("lat", lat))
-                pt_lng = float(args.get("lng", lng))
-                elevation = fetch_gsi_elevation_single(pt_lat, pt_lng)
-                fn_response_parts.append(
-                    types.Part(
-                        function_response=types.FunctionResponse(
-                            name="get_gsi_elevation",
-                            response={"elevation_m": elevation, "data_source": "gsi_elevation_api"},
-                        )
-                    )
-                )
-        if fn_response_parts:
             response = client.models.generate_content(
                 model=model,
-                contents=[
-                    types.Content(role="user", parts=[types.Part(text=prompt)]),
-                    first_content,
-                    types.Content(role="user", parts=fn_response_parts),
-                ],
+                contents=prompt,
                 config=types.GenerateContentConfig(
                     tools=tools,
                     temperature=0.2,
@@ -446,8 +465,47 @@ def analyze_feng_shui_location(
                 ),
             )
 
-    raw_text = _extract_text(response)
-    model_payload = _parse_json_block(raw_text)
+            # --- Function Calling ハンドリング（最大1ラウンドトリップ）---
+            first_candidate = (getattr(response, "candidates", None) or [None])[0]
+            first_content = getattr(first_candidate, "content", None)
+            if first_content:
+                fn_response_parts: list[Any] = []
+                for part in getattr(first_content, "parts", []) or []:
+                    fc = getattr(part, "function_call", None)
+                    if fc and fc.name == "get_gsi_elevation":
+                        args = fc.args or {}
+                        pt_lat = float(args.get("lat", lat))
+                        pt_lng = float(args.get("lng", lng))
+                        elevation = fetch_gsi_elevation_single(pt_lat, pt_lng)
+                        fn_response_parts.append(
+                            types.Part(
+                                function_response=types.FunctionResponse(
+                                    name="get_gsi_elevation",
+                                    response={"elevation_m": elevation, "data_source": "gsi_elevation_api"},
+                                )
+                            )
+                        )
+                if fn_response_parts:
+                    response = client.models.generate_content(
+                        model=model,
+                        contents=[
+                            types.Content(role="user", parts=[types.Part(text=prompt)]),
+                            first_content,
+                            types.Content(role="user", parts=fn_response_parts),
+                        ],
+                        config=types.GenerateContentConfig(
+                            tools=tools,
+                            temperature=0.2,
+                            response_mime_type="application/json",
+                        ),
+                    )
+
+            raw_text = _extract_text(response)
+            model_payload = _parse_json_block(raw_text)
+        except Exception as exc:
+            model_payload = _default_model_payload(str(exc))
+    else:
+        model_payload = _default_model_payload("GEMINI_API_KEY missing")
 
     # 地形プロファイル確定：GSIを優先、GSI失敗かつグラウンディング疎の場合のみ
     # Google Maps Elevation API にフォールバック（APIキー必要）
