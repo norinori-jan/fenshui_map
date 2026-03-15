@@ -17,8 +17,8 @@ export default function GsiToggle({ active, opacity, onToggle, onOpacityChange }
       active={active}
       label="地理院図"
       value={opacity}
-      min={0.2}
-      max={0.9}
+      min={0.35}
+      max={1}
       step={0.05}
       onToggle={onToggle}
       onChange={onOpacityChange}

@@ -3,6 +3,8 @@ export type LatLng = {
   lng: number
 }
 
+export type LocationAccuracyMode = 'low' | 'balanced' | 'high'
+
 export type TerrainProfile = {
   center_elevation_m: number | null
   north_avg_elevation_m: number | null

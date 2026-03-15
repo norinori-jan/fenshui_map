@@ -126,6 +126,12 @@ GitHub リポジトリの `Settings > Secrets and variables > Actions` で、次
 - `GCP_SERVICE_ACCOUNT_EMAIL`
 - `VITE_GOOGLE_MAPS_API_KEY` （ブラウザ向け。必ずリファラ制限を有効化）
 
+### 1.1) GitHub Variables（Actions）
+
+`Settings > Secrets and variables > Actions > Variables` に以下を追加します。
+
+- `VITE_FENSHUI_APP_URL` （例: `https://fenshui-app.web.app`）
+
 補足: `VITE_` で始まる値はビルド後にクライアントへ配布されるため、完全秘匿は不可能です。必ず API 制限・HTTP リファラ制限で保護してください。
 
 ### 2) Secret Manager へサーバー機密を登録

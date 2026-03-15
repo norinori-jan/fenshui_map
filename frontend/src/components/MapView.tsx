@@ -2,6 +2,7 @@ import { GoogleMap, useJsApiLoader } from '@react-google-maps/api'
 import { forwardRef, useEffect, useImperativeHandle, useRef } from 'react'
 
 const GSI_HILL_URL = 'https://cyberjapandata.gsi.go.jp/xyz/hillshademap/{z}/{x}/{y}.png'
+const GSI_CONTOUR_URL = 'https://cyberjapandata.gsi.go.jp/xyz/contour/{z}/{x}/{y}.png'
 
 const MAP_OPTIONS: google.maps.MapOptions = {
   disableDefaultUI: true,
@@ -25,7 +26,8 @@ const MapView = forwardRef<MapViewHandle, Props>(function MapView(
   ref,
 ) {
   const googleMapRef = useRef<google.maps.Map | null>(null)
-  const gsiLayerRef = useRef<google.maps.ImageMapType | null>(null)
+  const hillLayerRef = useRef<google.maps.ImageMapType | null>(null)
+  const contourLayerRef = useRef<google.maps.ImageMapType | null>(null)
 
   function createGsiLayer(opacity: number): google.maps.ImageMapType {
     return new window.google.maps.ImageMapType({
@@ -39,6 +41,29 @@ const MapView = forwardRef<MapViewHandle, Props>(function MapView(
       opacity,
       name: 'GSI陰影起伏図',
     })
+  }
+
+  function createContourLayer(opacity: number): google.maps.ImageMapType {
+    return new window.google.maps.ImageMapType({
+      getTileUrl: (coord, zoom) =>
+        GSI_CONTOUR_URL.replace('{z}', String(zoom))
+          .replace('{x}', String(coord.x))
+          .replace('{y}', String(coord.y)),
+      tileSize: new window.google.maps.Size(256, 256),
+      maxZoom: 18,
+      minZoom: 5,
+      opacity,
+      name: 'GSI等高線',
+    })
+  }
+
+  function removeOverlayByLayer(
+    overlays: google.maps.MVCArray<google.maps.MapType | null>,
+    layer: google.maps.ImageMapType | null,
+  ) {
+    if (!layer) return
+    const idx = overlays.getArray().indexOf(layer)
+    if (idx !== -1) overlays.removeAt(idx)
   }
 
   const { isLoaded, loadError } = useJsApiLoader({
@@ -57,32 +82,55 @@ const MapView = forwardRef<MapViewHandle, Props>(function MapView(
 
   useEffect(() => {
     const map = googleMapRef.current
-    const layer = gsiLayerRef.current
-    if (!map || !layer) return
+    const hill = hillLayerRef.current
+    const contour = contourLayerRef.current
+    if (!map || !hill || !contour) return
 
     const overlays = map.overlayMapTypes
-    const idx = overlays.getArray().indexOf(layer)
+    const hillIdx = overlays.getArray().indexOf(hill)
+    const contourIdx = overlays.getArray().indexOf(contour)
 
-    if (gsiVisible && idx === -1) overlays.push(layer)
-    else if (!gsiVisible && idx !== -1) overlays.removeAt(idx)
+    if (gsiVisible) {
+      if (hillIdx === -1) overlays.push(hill)
+      if (contourIdx === -1) overlays.push(contour)
+    } else {
+      if (hillIdx !== -1) overlays.removeAt(hillIdx)
+      const nextContourIdx = overlays.getArray().indexOf(contour)
+      if (nextContourIdx !== -1) overlays.removeAt(nextContourIdx)
+    }
   }, [gsiVisible])
 
   useEffect(() => {
     const map = googleMapRef.current
-    const currentLayer = gsiLayerRef.current
-    if (!map || !currentLayer) return
+    const currentHill = hillLayerRef.current
+    const currentContour = contourLayerRef.current
+    if (!map || !currentHill || !currentContour) return
 
     const overlays = map.overlayMapTypes
-    const idx = overlays.getArray().indexOf(currentLayer)
-    const nextLayer = createGsiLayer(gsiOpacity)
-    gsiLayerRef.current = nextLayer
+    const nextHill = createGsiLayer(gsiOpacity)
+    const nextContour = createContourLayer(Math.min(1, gsiOpacity + 0.2))
 
-    if (idx !== -1) overlays.setAt(idx, nextLayer)
+    const hillIdx = overlays.getArray().indexOf(currentHill)
+    const contourIdx = overlays.getArray().indexOf(currentContour)
+
+    hillLayerRef.current = nextHill
+    contourLayerRef.current = nextContour
+
+    if (hillIdx !== -1) overlays.setAt(hillIdx, nextHill)
+    if (contourIdx !== -1) overlays.setAt(contourIdx, nextContour)
+
+    if (gsiVisible) {
+      removeOverlayByLayer(overlays, currentHill)
+      removeOverlayByLayer(overlays, currentContour)
+      overlays.push(nextHill)
+      overlays.push(nextContour)
+    }
   }, [gsiOpacity])
 
   function handleMapLoad(map: google.maps.Map): void {
     googleMapRef.current = map
-    gsiLayerRef.current = createGsiLayer(gsiOpacity)
+    hillLayerRef.current = createGsiLayer(gsiOpacity)
+    contourLayerRef.current = createContourLayer(Math.min(1, gsiOpacity + 0.2))
   }
 
   function handleIdle(): void {

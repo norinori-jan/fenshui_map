@@ -3,10 +3,16 @@ name: Deploy Firebase Hosting + Cloud Run
 on:
   push:
     branches: ["main"]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-firebase-cloudrun-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     permissions:
       contents: read
       id-token: write
@@ -23,8 +29,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # --- ここを「合鍵（JSONキー）」を使う方式に変更しました ---
-      - name: Authenticate to Google Cloud
+      - name: Authenticate to Google Cloud (Workload Identity Federation)
+        if: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER != '' && secrets.GCP_SERVICE_ACCOUNT_EMAIL != '' }}
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT_EMAIL }}
+
+      - name: Authenticate to Google Cloud (Service Account Key fallback)
+        if: ${{ !(secrets.GCP_WORKLOAD_IDENTITY_PROVIDER != '' && secrets.GCP_SERVICE_ACCOUNT_EMAIL != '') }}
         uses: google-github-actions/auth@v2
         with:
           credentials_json: ${{ secrets.GCP_SA_KEY }}
@@ -41,25 +54,32 @@ jobs:
         working-directory: frontend
         env:
           VITE_GOOGLE_MAPS_API_KEY: ${{ secrets.VITE_GOOGLE_MAPS_API_KEY }}
+          VITE_FENSHUI_APP_URL: ${{ vars.VITE_FENSHUI_APP_URL }}
         run: |
+          set -euo pipefail
           npm ci
           npm run typecheck
           npm run build
 
       - name: Sync secrets to Secret Manager
-        run: bash scripts/set_gcp_secrets.sh
+        run: |
+          set -euo pipefail
+          bash scripts/set_gcp_secrets.sh
 
       - name: Deploy backend (Cloud Run)
-        run: bash scripts/deploy_cloudrun.sh
+        run: |
+          set -euo pipefail
+          bash scripts/deploy_cloudrun.sh
 
       - name: Install Firebase CLI
-        run: npm install -g firebase-tools
+        run: npm install -g firebase-tools@13
 
       - name: Deploy hosting
-        run: firebase deploy --only hosting --project "$GCP_PROJECT_ID" --non-interactive
+        run: firebase deploy --only hosting --project "$GCP_PROJECT_ID" --non-interactive --force
 
       - name: Health check (Cloud Run)
         run: |
+          set -euo pipefail
           RUN_URL="$(gcloud run services describe "$CLOUD_RUN_SERVICE" --region "$GCP_REGION" --project "$GCP_PROJECT_ID" --format='value(status.url)')"
           echo "Cloud Run URL: $RUN_URL"
           for i in {1..20}; do
@@ -76,6 +96,7 @@ jobs:
 
       - name: Health check (Firebase Hosting)
         run: |
+          set -euo pipefail
           HOSTING_URL="https://${GCP_PROJECT_ID}.web.app"
           echo "Hosting URL: $HOSTING_URL"
           for i in {1..20}; do
